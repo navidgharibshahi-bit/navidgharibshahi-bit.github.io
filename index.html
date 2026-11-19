@@ -1738,6 +1738,13 @@
           ],
           "چهارمحال و بختیاری": [
             {
+              title: "پشم‌هایی که روزگاری طلا بودند/ ضرورت احیای زنجیره ارزش پشم در چهارمحال و بختیاری",
+              excerpt: "گزارشی درباره پشم عشایر چهارمحال و بختیاری و ضرورت احیای زنجیره ارزش آن.",
+              source: "ایسنا",
+              date: "۲۶ آبان ۱۴۰۵",
+              url: "https://isna.ir/xdXsTw"
+            },
+            {
               title: "آرد عشایر در پیچ‌وخم سامانه سیما/ سهمیه‌ای که گاهی به مقصد نمی‌رسد",
               excerpt: "نان، قوت غالب سفره‌های روستایی و عشایری است، ضرورتی که برای عشایر دور از آبادی‌ها و خبازی‌ها اهمیتی دوچندان دارد، با این حال، خطاهای سامانه یکپارچه مدیریت آرد در تخصیص سهمیه آرد در چهارمحال‌وبختیاری، برخی عشایر را با مشکل مواجه کرده است.",
               source: "ایسنا",
@@ -1835,6 +1842,13 @@
            a new tab; no excerpt is invented for these items. */
         var CAT_LINKS = {
           economy: [
+            {
+              title: "پشم‌هایی که روزگاری طلا بودند/ ضرورت احیای زنجیره ارزش پشم در چهارمحال و بختیاری",
+              excerpt: "گزارشی درباره پشم عشایر چهارمحال و بختیاری و ضرورت احیای زنجیره ارزش آن.",
+              source: "ایسنا",
+              date: "۲۶ آبان ۱۴۰۵",
+              url: "https://isna.ir/xdXsTw"
+            },
             {
               title: "اقتصاد اجتماعی عشایر؛ شکوه شیوه تولید",
               source: "ایرنا",
@@ -2398,12 +2412,14 @@
             a.rel = "noopener noreferrer";
             var metaHtml = '<span class="src"></span>';
             if (n.date) metaHtml += '<i></i><span class="date"></span>';
-            metaHtml += '<span class="news-go">مشاهده در منبع ' + NEWS_ARROW + "</span>";
+            metaHtml += '<span class="news-go">' + (n.excerpt ? "ادامه خبر در منبع " : "مشاهده در منبع ") + NEWS_ARROW + "</span>";
             metaHtml += '<span class="share-btn share-open" role="button" tabindex="0">' + SHARE_ICON + "<span>" + (isIntl ? "Share" : "اشتراک‌گذاری") + "</span></span>";
             a.innerHTML =
               '<h4 class="news-title"></h4>' +
+              (n.excerpt ? '<p class="news-excerpt"></p>' : "") +
               '<div class="news-meta">' + metaHtml + "</div>";
             a.querySelector(".news-title").textContent = n.title;
+            if (n.excerpt) a.querySelector(".news-excerpt").textContent = n.excerpt;
             a.querySelector(".news-meta .src").textContent = n.source;
             if (n.date) a.querySelector(".news-meta .date").textContent = n.date;
             var catShareBtn = a.querySelector(".share-btn");
