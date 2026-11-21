@@ -323,6 +323,11 @@
          reuse the contact form's look, two per row on wide screens ---- */
       .pw { scroll-margin-top: 96px; }
       .ic.c-window { background: linear-gradient(150deg, #34b37a, #0e5c3f); }
+      /* the window icon carries a whole nomadic scene (black tent, wheat,
+         sheep, kilim weave), so it gets a slightly larger stage than the
+         other panel icons to stay legible */
+      .panel-head .ic.c-window { width: 58px; height: 58px; border-radius: 19px; }
+      .panel-head .ic.c-window svg { width: 44px; height: 44px; }
       .pw-desc { margin: 6px 0 20px; color: var(--ink-2); line-height: 2.1; font-size: 1rem; text-align: justify; }
       form.contact select {
         width: 100%; border: 1px solid var(--glass-border); background: var(--field-bg);
@@ -825,7 +830,7 @@
         <!-- ============ SINGLE SERVICE WINDOW (پنجره واحد خدمت) ============ -->
         <section class="panel glass reveal pw" id="panjere" aria-labelledby="pw-title">
           <div class="panel-head">
-            <span class="ic c-window"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3.5" width="16" height="17" rx="2.5"/><path d="M12 3.5v17M4 12h16"/></svg></span>
+            <span class="ic c-window"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="42" height="42" rx="7"/><path d="M23 18v-7.4"/><path d="M23 8.8l2 2-2 2-2-2z"/><path d="M12 38L23 18l11 20z"/><path d="M19.6 38L23 29l3.4 9"/><path d="M15.8 32.5h14.4"/><path d="M8.5 38V17"/><path d="M8.5 19.5L5.6 16.4M8.5 19.5l2.9-3.1M8.5 24.8l-2.9-3.1M8.5 24.8l2.9-3.1M8.5 30.1L5.6 27M8.5 30.1l2.9-3.1"/><path d="M8.5 17v-3.8"/><ellipse cx="38" cy="32" rx="4.9" ry="3.5"/><circle cx="32.6" cy="29.8" r="2.1"/><path d="M31.2 28.2l-1.6-1.4"/><path d="M35 35.5V39M41 35.5V39"/><path d="M7 41.6l2.8-1.9 2.8 1.9 2.8-1.9 2.8 1.9 2.8-1.9 2.8 1.9 2.8-1.9 2.8 1.9 2.8-1.9 2.8 1.9 2.8-1.9 2.8 1.9"/></svg></span>
             <div>
               <h2 id="pw-title">پنجره واحد خدمت عشایری–روستایی</h2>
               <p>هر خدمت، یک درگاه واحد؛ فقط یک‌بار مراجعه کنید</p>
@@ -892,7 +897,7 @@
               <input id="pw-website" type="text" name="website" tabindex="-1" autocomplete="off" />
             </div>
             <div class="wide">
-              <button class="btn primary" type="submit">ثبت درخواست خدمت</button>
+              <button class="btn primary" type="submit">بفرما خدمت از ماست</button>
             </div>
             <p class="form-status" id="pw-status" role="status" aria-live="polite" hidden></p>
             <div class="pw-code-box" id="pw-code-box" hidden>
@@ -900,7 +905,7 @@
               <b class="pw-code-value" id="pw-code" dir="ltr" lang="en"></b>
               <p class="pw-code-note">کد پیگیری خود را نگه دارید؛ درخواست شما حداکثر تا ۳۰ روز پاسخ داده می‌شود.</p>
             </div>
-            <p class="form-note wide">درخواست شما با زدن «ثبت درخواست خدمت» مستقیماً از همین سایت ارسال می‌شود؛ نیازی به برنامه ایمیل ندارید.</p>
+            <p class="form-note wide">بفرما خدمت از ماست</p>
           </form>
         </section>
 
