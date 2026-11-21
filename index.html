@@ -318,6 +318,33 @@
       .soon b { color: var(--green-800); font-size: 1.08rem; }
       html[data-theme="dark"] .soon b { color: #e9d9a8; }
 
+      /* ---- پنجره واحد خدمت (single service window): one glass panel with
+         a short explanation and a service-request form; the form fields
+         reuse the contact form's look, two per row on wide screens ---- */
+      .pw { scroll-margin-top: 96px; }
+      .ic.c-window { background: linear-gradient(150deg, #34b37a, #0e5c3f); }
+      .pw-desc { margin: 6px 0 20px; color: var(--ink-2); line-height: 2.1; font-size: 1rem; text-align: justify; }
+      form.contact select {
+        width: 100%; border: 1px solid var(--glass-border); background: var(--field-bg);
+        border-radius: 16px; padding: 12px 15px; font-family: inherit; font-size: .97rem; color: var(--ink);
+        outline: none; box-shadow: var(--inner-hi); appearance: none; -webkit-appearance: none; cursor: pointer;
+      }
+      form.contact select:focus { outline: 2px solid var(--sel-ring); outline-offset: 1px; }
+      .pw-form { grid-template-columns: 1fr 1fr; }
+      @media (max-width: 640px) { .pw-form { grid-template-columns: 1fr; } }
+      .pw-form .wide { grid-column: 1 / -1; }
+      .pw-form .form-status { grid-column: 1 / -1; }
+      .pw-code-box {
+        grid-column: 1 / -1; text-align: center;
+        border: 1.5px dashed rgba(193,154,63,.65); border-radius: 18px;
+        padding: 18px 16px; background: var(--field-bg); box-shadow: var(--inner-hi);
+      }
+      .pw-code-box[hidden] { display: none; }
+      .pw-code-label { display: block; font-size: .9rem; font-weight: 700; color: var(--ink-2); margin-bottom: 6px; }
+      .pw-code-value { display: block; direction: ltr; unicode-bidi: isolate; font-size: 1.4rem; font-weight: 900; letter-spacing: .05em; color: var(--green-800); }
+      html[data-theme="dark"] .pw-code-value { color: #e9d9a8; }
+      .pw-code-note { margin: 10px 0 0; color: var(--ink-2); font-size: .93rem; line-height: 1.9; }
+
       /* ---- province news cards (whole card links out to the source) ---- */
       .news-head { margin: 24px 0 4px; font-size: 1.18rem; font-weight: 900; color: var(--green-900); display: flex; align-items: center; gap: 12px; }
       html[data-theme="dark"] .news-head { color: #f3e9c8; }
@@ -793,6 +820,67 @@
               استان‌ها
             </button>
           </div>
+        </section>
+
+        <!-- ============ SINGLE SERVICE WINDOW (پنجره واحد خدمت) ============ -->
+        <section class="panel glass reveal pw" id="panjere" aria-labelledby="pw-title">
+          <div class="panel-head">
+            <span class="ic c-window"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3.5" width="16" height="17" rx="2.5"/><path d="M12 3.5v17M4 12h16"/></svg></span>
+            <div>
+              <h2 id="pw-title">پنجره واحد خدمت عشایری–روستایی</h2>
+              <p>هر خدمت، یک درگاه واحد؛ فقط یک‌بار مراجعه کنید</p>
+            </div>
+          </div>
+          <p class="pw-desc">هر خدمت عشایری یا روستایی، یک درگاه واحد دارد؛ مردم برای یک خدمت فقط یک‌بار مراجعه می‌کنند و نهادهای دیگر خدمت را از پشت همان پنجره می‌دهند، نه با مراجعه مستقیم مردم. پنجره واحد، نهاد تازه‌ای نیست و وظیفه قانونی هیچ نهادی را حذف نمی‌کند؛ فقط نقطه تماس مردم با نهادها را یکی می‌کند.</p>
+          <form class="contact pw-form" id="pw-form" novalidate>
+            <div>
+              <label for="pw-name">نام و نام خانوادگی</label>
+              <input id="pw-name" type="text" placeholder="نام شما" autocomplete="name" />
+            </div>
+            <div>
+              <label for="pw-phone">شماره تماس</label>
+              <input id="pw-phone" type="tel" placeholder="شماره موبایل" autocomplete="tel" />
+            </div>
+            <div>
+              <label for="pw-province">استان</label>
+              <select id="pw-province">
+                <option value="">استان را انتخاب کنید</option>
+              </select>
+            </div>
+            <div>
+              <label for="pw-county">شهرستان</label>
+              <input id="pw-county" type="text" placeholder="نام شهرستان" />
+            </div>
+            <div class="wide">
+              <label for="pw-service">خدمت</label>
+              <select id="pw-service">
+                <option value="">خدمت مورد نیاز را انتخاب کنید</option>
+                <option value="وام و تسهیلات">وام و تسهیلات</option>
+                <option value="گاز و آرد و ملزومات">گاز و آرد و ملزومات</option>
+                <option value="آب">آب</option>
+                <option value="راه و دسترسی">راه و دسترسی</option>
+                <option value="سایر">سایر</option>
+              </select>
+            </div>
+            <div class="wide">
+              <label for="pw-text">شرح درخواست</label>
+              <textarea id="pw-text" rows="4" placeholder="درخواست خود را اینجا بنویسید…"></textarea>
+            </div>
+            <div class="hp" aria-hidden="true">
+              <label for="pw-website">وب‌سایت</label>
+              <input id="pw-website" type="text" name="website" tabindex="-1" autocomplete="off" />
+            </div>
+            <div class="wide">
+              <button class="btn primary" type="submit">ثبت درخواست خدمت</button>
+            </div>
+            <p class="form-status" id="pw-status" role="status" aria-live="polite" hidden></p>
+            <div class="pw-code-box" id="pw-code-box" hidden>
+              <span class="pw-code-label">کد پیگیری شما</span>
+              <b class="pw-code-value" id="pw-code" dir="ltr" lang="en"></b>
+              <p class="pw-code-note">کد پیگیری خود را نگه دارید؛ درخواست شما حداکثر تا ۳۰ روز پاسخ داده می‌شود.</p>
+            </div>
+            <p class="form-note wide">درخواست شما با زدن «ثبت درخواست خدمت» مستقیماً از همین سایت ارسال می‌شود؛ نیازی به برنامه ایمیل ندارید.</p>
+          </form>
         </section>
 
         <div class="sec-head reveal" id="sections">
@@ -2613,6 +2701,126 @@
             formTickMs = 0;
           }).catch(function () {
             showStatus("ارسال پیام ناموفق بود. لطفاً چند لحظه دیگر دوباره تلاش کنید.", false);
+          }).then(function () {
+            submitBtn.disabled = false;
+            submitBtn.textContent = submitLabel;
+          });
+        });
+
+        /* ---- پنجره واحد خدمت: service-request form. It sends through the
+           SAME FormSubmit AJAX endpoint and alias as the contact form
+           above, so requests arrive in the same inbox as contact messages.
+           On a successful send a unique tracking code (PW-YYYYMMDD-random)
+           is generated, included in the submitted data, and shown to the
+           visitor. Province options are filled from the site's own
+           PROVINCES list (the same 31 provinces as the provinces grid).
+           Anti-spam mirrors the contact form: honeypot + a minimum
+           fill-time check from the first interaction. ---- */
+        var pwFormEl = document.getElementById("pw-form");
+        var pwProvinceEl = document.getElementById("pw-province");
+        PROVINCES.forEach(function (name) {
+          var opt = document.createElement("option");
+          opt.value = name;
+          opt.textContent = name;
+          pwProvinceEl.appendChild(opt);
+        });
+        var pwStatus = document.getElementById("pw-status");
+        function pwShowStatus(msg, ok) {
+          pwStatus.textContent = msg;
+          pwStatus.className = "form-status " + (ok ? "ok" : "err");
+          pwStatus.hidden = false;
+        }
+        /* visitors often type phone numbers with Persian/Arabic digits:
+           normalize them to Latin digits before validating and sending */
+        function pwDigits(s) {
+          return s.replace(/[۰-۹]/g, function (d) { return "۰۱۲۳۴۵۶۷۸۹".indexOf(d); })
+                  .replace(/[٠-٩]/g, function (d) { return "٠١٢٣٤٥٦٧٨٩".indexOf(d); });
+        }
+        var pwInteractedAt = null;
+        ["focusin", "input", "change", "keydown", "pointerdown", "mousedown", "touchstart", "click"].forEach(function (evt) {
+          pwFormEl.addEventListener(evt, function (e) {
+            if (pwInteractedAt) return;
+            if (e.target && e.target.closest && e.target.closest('button[type="submit"]')) return;
+            pwInteractedAt = Date.now();
+          }, true);
+        });
+        pwFormEl.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var nameEl = document.getElementById("pw-name");
+          var phoneEl = document.getElementById("pw-phone");
+          var countyEl = document.getElementById("pw-county");
+          var serviceEl = document.getElementById("pw-service");
+          var textEl = document.getElementById("pw-text");
+          var name = nameEl.value.trim();
+          var phone = pwDigits(phoneEl.value.trim());
+          var province = pwProvinceEl.value;
+          var county = countyEl.value.trim();
+          var service = serviceEl.value;
+          var text = textEl.value.trim();
+          var trap = document.getElementById("pw-website").value;
+          if (!name) {
+            pwShowStatus("لطفاً نام و نام خانوادگی خود را بنویسید.", false);
+            nameEl.focus();
+            return;
+          }
+          if (!/^\+?\d{10,15}$/.test(phone.replace(/[\s\-()]/g, ""))) {
+            pwShowStatus("لطفاً یک شماره تماس معتبر وارد کنید.", false);
+            phoneEl.focus();
+            return;
+          }
+          if (!province) {
+            pwShowStatus("لطفاً استان خود را انتخاب کنید.", false);
+            pwProvinceEl.focus();
+            return;
+          }
+          if (!service) {
+            pwShowStatus("لطفاً خدمت مورد نیاز را انتخاب کنید.", false);
+            serviceEl.focus();
+            return;
+          }
+          if (!text) {
+            pwShowStatus("لطفاً شرح درخواست خود را بنویسید.", false);
+            textEl.focus();
+            return;
+          }
+          if (trap || (pwInteractedAt && Date.now() - pwInteractedAt < 2000)) {
+            pwShowStatus("ثبت درخواست ممکن نشد. لطفاً چند لحظه دیگر دوباره تلاش کنید.", false);
+            return;
+          }
+          var now = new Date();
+          function pad2(n) { return (n < 10 ? "0" : "") + n; }
+          var code = "PW-" + now.getFullYear() + pad2(now.getMonth() + 1) + pad2(now.getDate()) + "-" + Math.floor(100000 + Math.random() * 900000);
+          var submitBtn = pwFormEl.querySelector('button[type="submit"]');
+          var submitLabel = submitBtn.textContent;
+          submitBtn.disabled = true;
+          submitBtn.textContent = "در حال ارسال…";
+          document.getElementById("pw-code-box").hidden = true;
+          fetch("https://formsubmit.co/ajax/" + FORM_ALIAS, {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "Accept": "application/json" },
+            body: JSON.stringify({
+              "کد پیگیری": code,
+              "نام و نام خانوادگی": name,
+              "شماره تماس": phone,
+              "استان": province,
+              "شهرستان": county,
+              "خدمت": service,
+              "شرح درخواست": text,
+              "_subject": "درخواست خدمت از پنجره واحد — سایت صدای عشایر ایران",
+              "_captcha": "false",
+              "_template": "table"
+            })
+          }).then(function (res) {
+            if (!res.ok) throw new Error("send failed");
+            return res.json().catch(function () { return {}; });
+          }).then(function () {
+            pwShowStatus("درخواست خدمت شما با موفقیت ثبت شد.", true);
+            document.getElementById("pw-code").textContent = code;
+            document.getElementById("pw-code-box").hidden = false;
+            pwFormEl.reset();
+            pwInteractedAt = null;
+          }).catch(function () {
+            pwShowStatus("ثبت درخواست ناموفق بود. لطفاً چند لحظه دیگر دوباره تلاش کنید.", false);
           }).then(function () {
             submitBtn.disabled = false;
             submitBtn.textContent = submitLabel;
